@@ -7,7 +7,7 @@ BACKGROUND_COLOR = arcade.color.WHITE
 TEXT_COLOR = arcade.color.BLACK
 TITLE = "The Roller Coaster: Buy it now!"
 
-MAX_HEIGHT = 100
+MAX_HEIGHT = 10
 MIN_HEIGHT = 0
 
 window = arcade.open_window(WIDTH, HEIGHT, TITLE)
@@ -62,11 +62,15 @@ def on_draw():
         ball.velocity = v2
 
 
-    arcade.draw_text(f"Height: {round(ball.height, 2)} m", 4 * WIDTH / 6, 5 * HEIGHT / 6, TEXT_COLOR)
-    arcade.draw_text(f"Mass: {round(ball.mass, 2)} kg", 4 * WIDTH / 6, 4 * HEIGHT / 6, TEXT_COLOR)
-    arcade.draw_text(f"Velocity: {round(ball.velocity, 2)} m/s", 4 * WIDTH / 6, 3 * HEIGHT / 6, TEXT_COLOR)
-    arcade.draw_text(f"Kinetic Energy: {round(0.5 * ball.mass * ball.velocity ** 2, 2)} J", 4 * WIDTH / 6, 2 * HEIGHT / 6, TEXT_COLOR)
-    arcade.draw_text(f"Potential Energy: {round(ball.mass * GRAVITY * ball.height, 2)} J", 4 * WIDTH / 6, 1 * HEIGHT / 6, TEXT_COLOR)
+    arcade.draw_text(f"Height: {round(ball.height, 2)} m", 4 * WIDTH / 6, 5 * HEIGHT / 7, TEXT_COLOR)
+    arcade.draw_text(f"Mass: {round(ball.mass, 2)} kg", 4 * WIDTH / 6, 4 * HEIGHT / 7, TEXT_COLOR)
+    arcade.draw_text(f"Velocity: {round(ball.velocity, 2)} m/s", 4 * WIDTH / 6, 3 * HEIGHT / 7, TEXT_COLOR)
+    ek = 0.5 * ball.mass * ball.velocity ** 2
+    eg = ball.mass * GRAVITY * ball.height
+    
+    arcade.draw_text(f"Kinetic Energy: {round(ek, 2)} J", 4 * WIDTH / 6, 2 * HEIGHT / 7, TEXT_COLOR)
+    arcade.draw_text(f"Potential Energy: {round(eg, 2)} J", 4 * WIDTH / 6, 1 * HEIGHT / 7, TEXT_COLOR)
+    arcade.draw_text(f"Total Energy: {round(ek + eg, 2)} J", 4 * WIDTH / 6, 6 * HEIGHT / 7, TEXT_COLOR)
 
 
 @window.event
